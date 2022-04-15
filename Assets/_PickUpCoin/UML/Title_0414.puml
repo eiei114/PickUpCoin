@@ -1,0 +1,16 @@
+﻿@startuml
+namespace _PickUpCoin.Title{
+class TitleManager
+interface I_View
+TitleManager..>TitleView
+TitleManager..>I_View
+TitleManager..>_PickUpCoin.Common.SceneManager
+
+I_View<..Option
+I_View<.. Ranking
+}
+
+namespace _PickUpCoin.Common{
+class SceneManager
+}
+@enduml

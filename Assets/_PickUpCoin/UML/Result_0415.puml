@@ -1,0 +1,15 @@
+﻿@startuml
+namespace _PickUpCoin.Common.Manager{
+ class GameManager
+ class Timer
+ GameManager..>Timer
+ }
+ 
+ namespace _PickUpCoin.Result.View{
+ class UIManager
+ class UIView
+ UIManager..>CurrentRanking
+ UIManager..>UIView
+ UIManager..>_PickUpCoin.Common.Manager.GameManager
+ }
+@enduml

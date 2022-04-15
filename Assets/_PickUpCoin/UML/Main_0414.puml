@@ -1,0 +1,55 @@
+﻿@startuml
+namespace _PickUpCoin.Main.Player{
+class PlayerManager
+class PlayerTrigger
+class PlayerStatus
+interface I_PlayerStatus
+class PlayerScore
+PlayerManager..>ThirdPersonController
+PlayerManager..>_PickUpCoin.Main.Input.InputController
+PlayerManager..>Mirror.NetworkTransform
+PlayerManager..>PlayerTrigger
+PlayerManager..>I_PlayerStatus
+PlayerManager..>PlayerScore
+I_PlayerStatus<..PlayerStatus
+I_PlayerStatus<.._PickUpCoin.Main.View.UIManager
+}
+
+namespace _PickUpCoin.Main.Input{
+class InputController
+}
+
+namespace _PickUpCoin.Main.View{
+interface I_View
+class UIManager
+I_View<..Menu
+UIManager..>I_View
+UIManager..>_PickUpCoin.Main.Input.InputController
+UIManager..>_PickUpCoin.Main.Player.PlayerScore
+}
+namespace _PickUpCoin.Common.Manager{
+class GameManager
+class Timer
+GameManager..>_PickUpCoin.Main.Player.PlayerManager
+GameManager..>_PickUpCoin.Main.View.UIManager
+GameManager..>Timer
+GameManager..>_PickUpCoin.Main.Player.PlayerScore
+}
+
+namespace _PickUpCoin.Main.Shared{
+class NetworkCommander
+class NetworkCommandManager
+NetworkCommandManager..>NetworkCommander
+NetworkCommandManager..>_PickUpCoin.Common.Manager.GameManager
+NetworkCommandManager..>_PickUpCoin.Main.Player.PlayerScore
+NetworkCommander..>Mirror.NetworkBehavior
+}
+
+namespace _PickUpCoin.Main.Server{
+}
+
+namespace Mirror{
+class NetworkTransform
+class NetworkBehavior
+}
+@enduml
